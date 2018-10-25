@@ -4,12 +4,14 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { CreateMemeComponent } from './components/create-meme/create-meme.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    CreateMemeComponent
+    CreateMemeComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule
