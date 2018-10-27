@@ -8,10 +8,16 @@ import { MemeService } from '../../services/meme.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  public meme: Meme[] = [];
 
-  constructor() { }
+  constructor(private memeService: MemeService) { }
 
   ngOnInit() {
+    this.memeService.getAllMemes()
+      .subscribe((m: Meme[]) => {
+        this.meme = m;
+        console.log(this.meme);
+      });
   }
 
 }
