@@ -13,31 +13,41 @@ export class HomeComponent implements OnInit {
   constructor(private memeService: MemeService) { }
 
   ngOnInit() {
-    /*this.memeService.getAllMemes()
-      .subscribe((m: Meme[]) => {
-        this.meme = m;
-        console.log(this.meme);
-      });
-    this.memeService.getAllMemeImages()
-      .subscribe((images: String[]) => {
-        console.log(images);
-      })
-    this.memeService.getMemeImage(1)
-      .subscribe((image: String) => {
-        console.log(image);
-      })
-    */
-    var meme: Meme = {
+    /*var meme: Meme = {
       imagePath: 'lilly',
       text: 'some text',
       author: 'cole',
       upvotes: 2894,
       downvotes: 83
     }
-    console.log('meme: ' + meme);
+    
     this.memeService.createMeme(meme)
       .subscribe((m: Meme) => {
         console.log(m);
       })
+    */
+    /*var meme: Meme = {
+      imagePath: 'somewhere',
+      text: 'some text',
+      author: 'cole',
+      upvotes: 24,
+      downvotes: 83
+    }
+  
+    this.memeService.createMeme(meme)
+      .subscribe((m: Meme) => {
+        console.log(m);
+      })*/
+  
+    this.memeService.getAllMemes()
+    .subscribe((memeArray) => {
+      console.log('typeof(memeArray): ' + typeof(memeArray));
+      for(var m in memeArray) {
+        console.log('m: ' + memeArray[m]);
+        this.meme.push(memeArray[m]);
+      }
+      console.log('meme[]: ' + this.meme);
+      
+    });
   }
 }

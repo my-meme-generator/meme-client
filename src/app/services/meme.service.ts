@@ -15,15 +15,11 @@ export class MemeService {
     return this.http.get<Meme[]>('http://localhost:8000/api/memes');
   }
 
-  getAllMemeImages(): Observable<String[]> {
-    return this.http.get<String[]>('http://localhost:8000/api/images');
-  }
-
-  getMemeImage(image): Observable<String> {
-    return this.http.get<String>('http://localhost:8000/api/images/' + image);
-  }
-
   createMeme(meme: Meme): Observable<Meme> {
     return this.http.post<Meme>('http://localhost:8000/api/meme', meme);
   }
+
+  /*updateMeme(meme: Meme): Observable<Meme> {
+    return this.http.put<Meme>('http://localhost:8000/' + meme._id, meme);
+  }*/
 }
