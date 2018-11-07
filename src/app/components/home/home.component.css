@@ -1,8 +1,9 @@
 .container {
   padding: 10px;
-  background-color: rgba(136, 135, 150, 0.829);
+  background-color: rgba(58, 58, 61, 0.829);
   border: 2px solid black;
-  text-align: center;
+  /*text-align: center;*/
+  width: 100%;
 }
 
 button {
