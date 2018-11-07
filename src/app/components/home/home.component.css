@@ -1,5 +1,13 @@
 .container {
-  position: relative;
+  padding: 10px;
+  background-color: rgba(136, 135, 150, 0.829);
+  border: 2px solid black;
+  text-align: center;
+}
+
+button {
+  margin-right: 10px;
+  border-radius: 4px;
 }
 
 .card {
