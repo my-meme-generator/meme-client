@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 import { Meme } from '../models/Meme';
 
@@ -8,6 +9,7 @@ import { Meme } from '../models/Meme';
   providedIn: 'root'
 })
 export class MemeService {
+  memes: Meme[] = [];
 
   constructor(private http: HttpClient) { }
 
@@ -19,7 +21,7 @@ export class MemeService {
     return this.http.post<Meme>('http://localhost:8000/api/meme', meme);
   }
 
-  /*updateMeme(meme: Meme): Observable<Meme> {
-    return this.http.put<Meme>('http://localhost:8000/' + meme._id, meme);
-  }*/
+  updateMeme(meme: Meme): Observable<any> {
+    return this.http.put<any>('http://localhost:8000/api/votes/' + meme._id, meme);
+  }
 }

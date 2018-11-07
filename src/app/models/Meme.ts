@@ -4,8 +4,10 @@
 export class Meme {
   _id?: string;
   imagePath: string;
-  text: string;
+  textAbove: string;
+  textBelow: string;
   author: string;
   upvotes: number;
   downvotes: number;
+  created: Date;
 }

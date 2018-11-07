@@ -1,3 +1,18 @@
-<p>
-  home works!
-</p>
+<div class="container">
+  <div *ngFor="let meme of memes">
+    <div class="card border-success mb-3" *ngIf="memes">
+      <div class="card-top">
+        <div class="above-text">{{meme.textAbove}}</div>
+        <div class="below-text">{{meme.textBelow}}</div>
+        <img src="{{meme.imagePath}}" alt="Card image cap">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">By: {{meme.author}} on {{meme.created | date: 'MM/dd/yyyy, hh:mm:ss a' }}</h5>
+        <span>
+          <p class="card-text"><i class="fa fa-thumbs-up" (click)="addToUpvotes(meme)"></i> {{meme.upvotes}}</p>
+          <p class="card-text"><i class="fa fa-thumbs-down" (click)="addToDownvotes(meme)"></i> {{meme.downvotes}}</p>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
