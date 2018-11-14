@@ -14,14 +14,31 @@ export class HomeComponent implements OnInit {
   constructor(private memeService: MemeService) { }
 
   ngOnInit() {
+    var meme: Meme = {
+      _id: null,
+      //imagePath: './assets/images/Ancient-Aliens.jpg',
+      imagePath: 'https://imgflip.com/s/meme/Ancient-Aliens.jpg'
+      textAbove: 'Mom got a haircut',
+      textBelow: 'Aliens',
+      author: 'zedzorander',
+      upvotes: 829,
+      downvotes: 21,
+      created: new Date()
+    }
+
+    this.memeService.createMeme(meme)
+      .subscribe((newMeme) => {
+        this.memes.push(newMeme);
+      })
+
     // Get memes from server
-    this.memeService.getAllMemes()
+    /*this.memeService.getAllMemes()
       .subscribe((memeArray: Meme[]) => {
         // Array sorted by most recently created is returned
         this.memes = memeArray.reverse();
         // DELETE THESE BEFORE DEPLOYMENT
         console.log(this.memes);
-      });
+      });*/
   }
 
   // Increase upvote for meme

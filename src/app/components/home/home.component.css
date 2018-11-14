@@ -1,14 +1,18 @@
 .container {
   padding: 10px;
   background-color: rgba(58, 58, 61, 0.829);
-  border: 2px solid black;
-  /*text-align: center;*/
+  border: 2px solid rgb(10, 94, 219);
+  text-align: center;
   width: 100%;
 }
 
+.row {
+  display: inline;
+}
+
 button {
-  margin-right: 10px;
   border-radius: 4px;
+  margin: 5px;
 }
 
 .card {
@@ -16,7 +20,7 @@ button {
   float: none;
   margin-bottom: 10px;
   max-width: 30rem;
-  background-color: rgba(50, 238, 191, 0.658);
+  background-color: rgb(115, 183, 228);
   border: 1px solid black;
 }
 
@@ -50,6 +54,7 @@ button {
 
 .card-body {
   margin: 10px;
+  text-align: left;
 }
 
 .card-title {
@@ -62,6 +67,7 @@ canvas {
 
 img {
   width: 100%;
+  border-radius: 4px;
 }
 
 span p {

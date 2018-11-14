@@ -1,0 +1,22 @@
+#outerContainer {
+  padding: 10px;
+  background-color: rgba(58, 58, 61, 0.829);
+  border: 2px solid rgb(10, 94, 219);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#innerContainer {
+  margin: 10px;
+  padding: 10px;
+  background-color: whitesmoke;
+  width: 60%;
+  height: 800px;
+  border-radius: 8px;
+}
+
+#headerRow {
+  padding: 25px;
+  text-align: center;
+}

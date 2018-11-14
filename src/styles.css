@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '../node_modules/font-awesome/css/font-awesome.css';
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 body {
   margin: 0;
@@ -7,7 +8,7 @@ body {
   width: 100%;
   height: 100vh;
   /*background image*/
-  background: url('./assets/images/pexels-photo-988872.jpeg');
+  background: url('./assets/images/bg_image/pexels-photo-988872.jpeg');
   background-position: center;
   background-size: cover;
   background-attachment: fixed;

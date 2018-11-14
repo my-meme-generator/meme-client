@@ -9,9 +9,10 @@ import { MemeService } from '../../services/meme.service';
 })
 export class CreateMemeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private memeService: MemeService) { }
 
   ngOnInit() {
+    
   }
 
 }
