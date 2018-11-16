@@ -11,13 +11,14 @@ import { ActivatedRoute } from '@angular/router';
 export class HomeComponent implements OnInit {
   public memes: Meme[] = [];
 
+  // LOOK UP INPUT TYPE FILE FOR ACCEPTING IMAGE FILES
+  
   constructor(private memeService: MemeService) { }
 
   ngOnInit() {
-    var meme: Meme = {
+    /*var meme: Meme = {
       _id: null,
-      //imagePath: './assets/images/Ancient-Aliens.jpg',
-      imagePath: 'https://imgflip.com/s/meme/Ancient-Aliens.jpg'
+      imagePath: '../../assets/images/meme_images/Ancient-Aliens.jpg',
       textAbove: 'Mom got a haircut',
       textBelow: 'Aliens',
       author: 'zedzorander',
@@ -30,15 +31,17 @@ export class HomeComponent implements OnInit {
       .subscribe((newMeme) => {
         this.memes.push(newMeme);
       })
-
+    */
     // Get memes from server
-    /*this.memeService.getAllMemes()
+    this.memeService.getAllMemes()
       .subscribe((memeArray: Meme[]) => {
         // Array sorted by most recently created is returned
         this.memes = memeArray.reverse();
+
         // DELETE THESE BEFORE DEPLOYMENT
         console.log(this.memes);
-      });*/
+      });
+      
   }
 
   // Increase upvote for meme
@@ -69,5 +72,10 @@ export class HomeComponent implements OnInit {
     this.memes = this.memes.sort((a, b) => {
       return +new Date(a.created) - +new Date(b.created);
     })
+  }
+
+  createCanvas(meme: Meme) {
+    var image = new Image();
+    image.src = meme.imagePath;
   }
 }

@@ -4,13 +4,25 @@
       CREATE FUNNY MEME OR GET OUT!!
     </div>
     <div class="row" id="memeRow">
-      <div class="col-lg-6">
-        Where meme creation goes
+      <div class="col-lg-8">
+        <canvas id="memeCanvas">
+          <img style="display: none" src="{{image}}" id="start-image">
+        </canvas>
+        <textarea id="upperText"></textarea>
+        <textarea id="lowerText"></textarea>
       </div>
-      <div class="col-lg-6">
-        Where picture selection goes
-        <div class="container" id="imageSelect">
-          
+      <div class="col-lg-4">
+        Select An Image
+        <div class="container">
+          <div *ngIf="images">
+            <div class="row">
+              <div *ngFor="let image of images">
+                <div class="col-md-3">
+                  <img src="{{image}}" alt="" (click)="selectImage(image)">
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

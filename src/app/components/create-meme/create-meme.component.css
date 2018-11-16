@@ -11,7 +11,7 @@
   margin: 10px;
   padding: 10px;
   background-color: whitesmoke;
-  width: 60%;
+  width: 80%;
   height: 800px;
   border-radius: 8px;
 }
@@ -19,4 +19,31 @@
 #headerRow {
   padding: 25px;
   text-align: center;
+  font-style: italic;
+  font-size: 48px;
+}
+
+canvas {
+  padding: 0;
+}
+
+#upperText {
+  z-index: 2;
+}
+
+#lowerText {
+  z-index: 2;
+}
+
+.row .container .row .col-md-3 {
+  margin: 0;
+  padding: 0;
+}
+
+.row .container .row .col-md-3 img {
+  display: inline-block;
+  width: 75px;
+  height: 75px;
+  border: 1px solid black;
+  cursor: pointer;
 }
