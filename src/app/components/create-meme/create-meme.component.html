@@ -8,11 +8,9 @@
         <canvas id="memeCanvas">
           <img style="display: none" src="{{image}}" id="start-image">
         </canvas>
-        <textarea id="upperText"></textarea>
-        <textarea id="lowerText"></textarea>
       </div>
       <div class="col-lg-4">
-        Select An Image
+        <p>Select An Image:</p>
         <div class="container">
           <div *ngIf="images">
             <div class="row">
@@ -23,6 +21,14 @@
               </div>
             </div>
           </div>
+        </div>
+        <hr>
+        <div id="input">
+          <p>Upper text:</p>
+          <input id="upperText" type="text" placeholder="enter text">
+          <p>Lower text:</p>
+          <input id="lowerText" type="text" placeholder="enter text">
+          <button type="button" class="btn btn-dark" (click)="createMeme()">Create Meme</button>
         </div>
       </div>
     </div>

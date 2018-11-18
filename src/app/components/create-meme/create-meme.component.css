@@ -24,7 +24,9 @@
 }
 
 canvas {
+  margin-left: 30px;
   padding: 0;
+  border: 2px solid black;
 }
 
 #upperText {
@@ -46,4 +48,14 @@ canvas {
   height: 75px;
   border: 1px solid black;
   cursor: pointer;
+}
+
+#input {
+  margin-top: 30px;
+  margin-right: 20px;
+}
+
+input {
+  margin-bottom: 30px;
+  width: 100%;
 }
