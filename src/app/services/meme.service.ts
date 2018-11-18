@@ -19,6 +19,8 @@ export class MemeService {
 
   // Add a new meme to database
   createMeme(meme: Meme): Observable<Meme> {
+    console.log("memeService createMeme: ");
+    console.log(meme);
     return this.http.post<Meme>('http://localhost:8000/api/meme', meme);
   }
 

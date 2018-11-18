@@ -6,7 +6,7 @@
     <div class="row" id="memeRow">
       <div class="col-lg-8">
         <canvas id="memeCanvas">
-          <img style="display: none" src="{{image}}" id="start-image">
+          <img style="display: none" src="{{mainImage}}" id="start-image">
         </canvas>
       </div>
       <div class="col-lg-4">
@@ -28,6 +28,8 @@
           <input id="upperText" type="text" placeholder="enter text">
           <p>Lower text:</p>
           <input id="lowerText" type="text" placeholder="enter text">
+          <p>Created by:</p>
+          <input id="author" type="text" placeholder="enter name">
           <button type="button" class="btn btn-dark" (click)="createMeme()">Create Meme</button>
         </div>
       </div>
