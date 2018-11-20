@@ -16,22 +16,7 @@ export class HomeComponent implements OnInit {
   constructor(private memeService: MemeService) { }
 
   ngOnInit() {
-    /*var meme: Meme = {
-      _id: null,
-      imagePath: '../../assets/images/meme_images/Ancient-Aliens.jpg',
-      textAbove: 'Mom got a haircut',
-      textBelow: 'Aliens',
-      author: 'zedzorander',
-      upvotes: 829,
-      downvotes: 21,
-      created: new Date()
-    }
 
-    this.memeService.createMeme(meme)
-      .subscribe((newMeme) => {
-        this.memes.push(newMeme);
-      })
-    */
     // Get memes from server
     this.memeService.getAllMemes()
       .subscribe((memeArray: Meme[]) => {
@@ -74,8 +59,4 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  createCanvas(meme: Meme) {
-    var image = new Image();
-    image.src = meme.imagePath;
-  }
 }

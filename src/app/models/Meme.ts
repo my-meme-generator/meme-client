@@ -3,9 +3,7 @@
  */
 export class Meme {
   _id?: string;
-  imagePath: string;
-  textAbove: string;
-  textBelow: string;
+  image: any;
   author: string;
   upvotes: number;
   downvotes: number;

@@ -21,7 +21,7 @@ export class MemeService {
   createMeme(meme: Meme): Observable<Meme> {
     console.log("memeService createMeme: ");
     console.log(meme);
-    return this.http.post<Meme>('http://localhost:8000/api/meme', meme);
+    return this.http.post<Meme>('http://localhost:8000/api/memes', meme);
   }
 
   // Update meme (for upvotes/downvotes)
