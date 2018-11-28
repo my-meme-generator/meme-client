@@ -89,6 +89,7 @@ export class CreateMemeComponent implements OnInit {
     // add image to imgur album 
     this.imgurService.uploadMeme(imageArray[1])
       .subscribe((imageResponse: ResponseMeme) => {
+        //console.log('datetime: ' + imageResponse.data.datetime)
         var newMeme: Meme = {
           imageLink: imageResponse.data.link,
           author: (<HTMLInputElement> document.getElementById('author')).value,
