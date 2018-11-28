@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, AfterContentInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Meme } from '../../models/Meme';
 import { MemeService } from '../../services/meme.service';
 import { ImgurService, ResponseArray, ResponseMeme } from '../../services/imgur.service';
@@ -13,8 +13,6 @@ export class CreateMemeComponent implements OnInit {
   public data: any[] = [];
   public images: any[] = [];
   public mainImage: string = '';
-  public dataURL;
-  public image;
   private ctx;
   private canvas;
 
@@ -27,10 +25,12 @@ export class CreateMemeComponent implements OnInit {
     this.canvas = <HTMLCanvasElement> document.getElementById('memeCanvas');
     this.ctx = this.canvas.getContext('2d');
   
+    // Set up canvas dimensions
     var deviceWidth = window.innerWidth;
     this.canvas.width = Math.min(600, deviceWidth-20);
     this.canvas.height = Math.min(480, deviceWidth-20);
 
+    // Grab the image templates off imgur
     this.imgurService.getTemplates()
       .subscribe((response: ResponseArray) => {
         this.data = response.data;

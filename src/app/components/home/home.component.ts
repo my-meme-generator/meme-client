@@ -1,7 +1,6 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Meme } from '../../models/Meme';
 import { MemeService } from '../../services/meme.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -16,14 +15,12 @@ export class HomeComponent implements OnInit {
   constructor(private memeService: MemeService) { }
 
   ngOnInit() {
-
     // Get memes from server
     this.memeService.getAllMemes()
       .subscribe((memeArray: Meme[]) => {
         // Array sorted by most recently created is returned
         this.memes = memeArray.reverse();
       });
-      
   }
 
   // Increase upvote for meme
