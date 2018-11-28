@@ -3,7 +3,7 @@
  */
 export class Meme {
   _id?: string;
-  image: any;
+  imageLink: string;
   author: string;
   upvotes: number;
   downvotes: number;

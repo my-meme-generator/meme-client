@@ -22,9 +22,6 @@ export class HomeComponent implements OnInit {
       .subscribe((memeArray: Meme[]) => {
         // Array sorted by most recently created is returned
         this.memes = memeArray.reverse();
-
-        // DELETE THESE BEFORE DEPLOYMENT
-        console.log(this.memes);
       });
       
   }
@@ -40,19 +37,21 @@ export class HomeComponent implements OnInit {
 
   // Increase downvote for meme
   addToDownvotes(meme: Meme) {
-    meme.downvotes++;
+    meme.downvotes++; 
     this.memeService.updateMeme(meme)
       .subscribe((updated) => {
         console.log(updated);
       })
   }
 
+  // Sort array by upvotes
   switchToUpvote() {
     this.memes = this.memes.sort((a, b) => {
       return a.upvotes - b.upvotes;
     })
   }
 
+  // Sort array by most recent
   switchToRecent() {
     this.memes = this.memes.sort((a, b) => {
       return +new Date(a.created) - +new Date(b.created);

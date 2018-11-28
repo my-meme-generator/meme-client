@@ -1,6 +1,8 @@
 import { Component, OnInit, AfterViewInit, AfterContentInit } from '@angular/core';
 import { Meme } from '../../models/Meme';
 import { MemeService } from '../../services/meme.service';
+import { ImgurService, ResponseArray, ResponseMeme } from '../../services/imgur.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-meme',
@@ -8,15 +10,17 @@ import { MemeService } from '../../services/meme.service';
   styleUrls: ['./create-meme.component.css']
 })
 export class CreateMemeComponent implements OnInit {
-  public images: string[] = [];
+  public data: any[] = [];
+  public images: any[] = [];
   public mainImage: string = '';
   public dataURL;
+  public image;
   private ctx;
   private canvas;
 
-  constructor(private memeService: MemeService) {
-    
-  }
+  constructor(private memeService: MemeService,
+              private imgurService: ImgurService,
+              private router: Router) {}
 
   ngOnInit() {
     // Canvas setup
@@ -27,12 +31,14 @@ export class CreateMemeComponent implements OnInit {
     this.canvas.width = Math.min(600, deviceWidth-20);
     this.canvas.height = Math.min(480, deviceWidth-20);
 
-    // Grab image files
-    this.images.push('../../assets/images/meme_images/Ancient-Aliens.jpg');
-    this.images.push('../../assets/images/meme_images/Disaster-Girl.jpg');
-    this.images.push('../../assets/images/meme_images/Futurama-Fry.jpg');
-    this.images.push('../../assets/images/meme_images/Mocking-Spongebob.jpg');
-    this.mainImage = this.images[0];
+    this.imgurService.getTemplates()
+      .subscribe((response: ResponseArray) => {
+        this.data = response.data;
+        for(var i = 0; i < this.data.length; ++i) {
+          this.images.push(this.data[i].link);
+        }
+        this.mainImage = this.images[0];
+      })
   }
 
   ngAfterViewInit() {
@@ -77,22 +83,25 @@ export class CreateMemeComponent implements OnInit {
     var yLower = this.canvas.height - 15;
     this.wrapText(lowerText, xLower, yLower, this.canvas.width, 55, false);
 
-    this.dataURL = this.canvas.toDataURL();
-    // add image to imgur album somehow
+    // Save image with text written on it
+    var imageArray = this.canvas.toDataURL('image/jpeg').split(',');
 
-    /*var meme: Meme = {
-      image: this.dataURL,
-      author: (<HTMLInputElement> document.getElementById('author')).value,
-      upvotes: 0,
-      downvotes: 0,
-      created: new Date()
-    }
-
-    this.memeService.createMeme(meme)
-      .subscribe((meme) => {
-        
-      });
-    */
+    // add image to imgur album 
+    this.imgurService.uploadMeme(imageArray[1])
+      .subscribe((imageResponse: ResponseMeme) => {
+        var newMeme: Meme = {
+          imageLink: imageResponse.data.link,
+          author: (<HTMLInputElement> document.getElementById('author')).value,
+          upvotes: 0,
+          downvotes: 0,
+          created: imageResponse.data.datetime
+        }
+        this.memeService.createMeme(newMeme)
+          .subscribe((meme: Meme) => {
+            newMeme = meme;
+          });
+        this.router.navigate(['/home']);
+      })
   }
 
   // Code modified from https://www.html5canvastutorials.com/tutorials/html5-canvas-wrap-text-tutorial/.
@@ -112,7 +121,7 @@ export class CreateMemeComponent implements OnInit {
       if (testWidth > maxWidth && n > 0) {
         lineCount++;
         if(lineCount === 2) {
-          //error message
+          // add error message
           (<HTMLInputElement> document.getElementById('upperText')).value = '';
           (<HTMLInputElement> document.getElementById('lowerText')).value = '';
           (<HTMLInputElement> document.getElementById('author')).value = '';
