@@ -39,4 +39,6 @@ testem.log
 Thumbs.db
 
 # imgur keys
-/src/assets/keys
+/src
+/assets
+/keys.ts
