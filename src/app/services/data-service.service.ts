@@ -11,6 +11,7 @@ export class DataService {
 
   constructor() {}
 
+  // Updates sibling components meme arrays
   updateMemes(memes: Meme[]) {
     this.memeSource.next(memes);
   }
