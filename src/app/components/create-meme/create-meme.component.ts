@@ -3,7 +3,7 @@ import { Meme } from '../../models/Meme';
 import { MemeService } from '../../services/meme.service';
 import { ImgurService, ResponseArray, ResponseMeme } from '../../services/imgur.service';
 import { Router } from '@angular/router';
-import { DataService } from 'src/app/services/data-service.service';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-create-meme',

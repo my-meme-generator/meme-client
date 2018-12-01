@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Meme } from '../../models/Meme';
 import { MemeService } from '../../services/meme.service';
-import { DataService } from 'src/app/services/data-service.service';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-home',

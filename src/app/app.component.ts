@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DataService } from './services/data-service.service';
+import { DataService } from './services/data.service';
 import { Meme } from './models/Meme';
 import { MemeService } from './services/meme.service';
 
