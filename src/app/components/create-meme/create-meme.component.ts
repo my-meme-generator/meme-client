@@ -3,6 +3,7 @@ import { Meme } from '../../models/Meme';
 import { MemeService } from '../../services/meme.service';
 import { ImgurService, ResponseArray, ResponseMeme } from '../../services/imgur.service';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/services/data-service.service';
 
 @Component({
   selector: 'app-create-meme',
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-meme.component.css']
 })
 export class CreateMemeComponent implements OnInit {
+  private memes: Meme[];
   public data: any[] = [];
   public images: any[] = [];
   public mainImage: string = '';
@@ -18,9 +20,15 @@ export class CreateMemeComponent implements OnInit {
 
   constructor(private memeService: MemeService,
               private imgurService: ImgurService,
-              private router: Router) {}
+              private router: Router,
+              private dataService: DataService) {}
 
   ngOnInit() {
+    this.dataService.currentMemes
+      .subscribe(memes => {
+        this.memes = memes;
+      })
+    
     // Canvas setup
     this.canvas = <HTMLCanvasElement> document.getElementById('memeCanvas');
     this.ctx = this.canvas.getContext('2d');
@@ -89,17 +97,22 @@ export class CreateMemeComponent implements OnInit {
     // add image to imgur album 
     this.imgurService.uploadMeme(imageArray[1])
       .subscribe((imageResponse: ResponseMeme) => {
-        //console.log('datetime: ' + imageResponse.data.datetime)
         var newMeme: Meme = {
           imageLink: imageResponse.data.link,
           author: (<HTMLInputElement> document.getElementById('author')).value,
           upvotes: 0,
           downvotes: 0,
-          created: imageResponse.data.datetime
+          created: new Date(imageResponse.data.datetime * 1000)
         }
         this.memeService.createMeme(newMeme)
           .subscribe((meme: Meme) => {
             newMeme = meme;
+            this.memes.push(newMeme);
+            this.memes = this.memes.sort((a, b) => {
+              return +new Date(a.created) - +new Date(b.created);
+            }).reverse();
+            // Share updated meme array with home component
+            this.dataService.updateMemes(this.memes);
           });
         this.router.navigate(['/home']);
       })

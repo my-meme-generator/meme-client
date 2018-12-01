@@ -8,7 +8,6 @@ import { Meme } from '../models/Meme';
   providedIn: 'root'
 })
 export class MemeService {
-  memes: Meme[] = [];
 
   constructor(private http: HttpClient) { }
 

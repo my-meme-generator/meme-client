@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <button (click)="switchToUpvote()">Sort by most recent</button>
-    <button (click)="switchToRecent()">Sort by most upvoted</button>
+    <button (click)="switchToRecent()">Sort by most recent</button>
+    <button (click)="switchToUpvote()">Sort by most upvoted</button>
   </div>
   <div *ngIf="memes">
     <div *ngFor="let meme of memes">
@@ -16,11 +16,6 @@
             <p class="card-text"><i class="fa fa-thumbs-down fa-2x" (click)="addToDownvotes(meme)"></i> {{meme.downvotes}}</p>
           </span>
           <br>
-          <span id="social">
-            <i class="fa fa-twitter fa-2x"></i>
-            <i class="fa fa-facebook fa-2x"></i>
-            <i class="fa fa-instagram fa-2x"></i>
-          </span>
         </div>
       </div>
     </div>

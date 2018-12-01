@@ -20,7 +20,7 @@ export interface ResponseMeme {
 })
 export class ImgurService {
   endpoint: string = 'https://api.imgur.com/3';
-  private keys: Keys;
+  private keys = new Keys;
 
   constructor(private http: HttpClient) { }
 

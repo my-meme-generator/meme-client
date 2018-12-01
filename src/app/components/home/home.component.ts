@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Meme } from '../../models/Meme';
 import { MemeService } from '../../services/meme.service';
+import { DataService } from 'src/app/services/data-service.service';
 
 @Component({
   selector: 'app-home',
@@ -12,15 +13,14 @@ export class HomeComponent implements OnInit {
 
   // LOOK UP INPUT TYPE FILE FOR ACCEPTING IMAGE FILES
   
-  constructor(private memeService: MemeService) { }
+  constructor(private memeService: MemeService,
+              private dataService: DataService) { }
 
   ngOnInit() {
-    // Get memes from server
-    this.memeService.getAllMemes()
-      .subscribe((memeArray: Meme[]) => {
-        // Array sorted by most recently created is returned
-        this.memes = memeArray.reverse();
-      });
+    this.dataService.currentMemes
+      .subscribe(memes => {
+        this.memes = memes;
+      })
   }
 
   // Increase upvote for meme
@@ -45,13 +45,13 @@ export class HomeComponent implements OnInit {
   switchToUpvote() {
     this.memes = this.memes.sort((a, b) => {
       return a.upvotes - b.upvotes;
-    })
+    }).reverse();
   }
 
   // Sort array by most recent
-  switchToRecent() {
+  switchToRecent() {;
     this.memes = this.memes.sort((a, b) => {
-      return +new Date(a.created) - +new Date(b.created);
+      return +new Date(b.created) - +new Date(a.created);
     })
   }
 
