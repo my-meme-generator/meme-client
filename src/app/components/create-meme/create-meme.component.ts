@@ -4,6 +4,8 @@ import { MemeService } from '../../services/meme.service';
 import { ImgurService, ResponseArray, ResponseMeme } from '../../services/imgur.service';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
+import  Swal from 'sweetalert2';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-create-meme',
@@ -81,16 +83,24 @@ export class CreateMemeComponent implements OnInit {
 
     // Place upper text
     var upperText = (<HTMLInputElement> document.getElementById('upperText')).value.toUpperCase();
+    var lowerText = (<HTMLInputElement> document.getElementById('lowerText')).value.toUpperCase();
+    var memeAuthor = (<HTMLInputElement> document.getElementById('author')).value;
+
+    if(upperText === '' || lowerText === '' || memeAuthor === '') {
+      this.emptyTextAlertBox();
+      this.resetFields();
+      return;
+    }
+
     var xUpper = this.canvas.width/2;
     var yUpper = 50;
     this.wrapText(upperText, xUpper, yUpper, this.canvas.width, 55, true);
 
     // Place lower text
-    var lowerText = (<HTMLInputElement> document.getElementById('lowerText')).value.toUpperCase();
     var xLower = this.canvas.width/2;
     var yLower = this.canvas.height - 15;
     this.wrapText(lowerText, xLower, yLower, this.canvas.width, 55, false);
-
+    
     // Save image with text written on it
     var imageArray = this.canvas.toDataURL('image/jpeg').split(',');
 
@@ -99,7 +109,7 @@ export class CreateMemeComponent implements OnInit {
       .subscribe((imageResponse: ResponseMeme) => {
         var newMeme: Meme = {
           imageLink: imageResponse.data.link,
-          author: (<HTMLInputElement> document.getElementById('author')).value,
+          author: memeAuthor,
           upvotes: 0,
           downvotes: 0,
           created: new Date(imageResponse.data.datetime * 1000)
@@ -114,8 +124,8 @@ export class CreateMemeComponent implements OnInit {
             // Share updated meme array with home component
             this.dataService.updateMemes(this.memes);
           });
-        this.router.navigate(['/home']);
       })
+    this.router.navigate(['/home']);
   }
 
   // Code modified from https://www.html5canvastutorials.com/tutorials/html5-canvas-wrap-text-tutorial/.
@@ -136,9 +146,8 @@ export class CreateMemeComponent implements OnInit {
         lineCount++;
         if(lineCount === 2) {
           // add error message
-          (<HTMLInputElement> document.getElementById('upperText')).value = '';
-          (<HTMLInputElement> document.getElementById('lowerText')).value = '';
-          (<HTMLInputElement> document.getElementById('author')).value = '';
+          this.textToLongAlertBox();
+          this.resetFields();
           this.selectImage(this.mainImage);
           break;
         } else {
@@ -164,4 +173,28 @@ export class CreateMemeComponent implements OnInit {
     this.ctx.fillText(line, x, y);
   }
 
+  // Alert box when the upper or lower text is more than two lines
+  textToLongAlertBox() {
+    swal({
+      titleText: "It's sooooo long!!",
+      text: 'I can only handle two lines of text per input box.',
+      imageUrl: 'https://sayingimages.com/wp-content/uploads/try-again-fail-meme.png'
+    })
+  }
+
+  // Alert box when input field is empty
+  emptyTextAlertBox() {
+    swal({
+      titleText: 'Empty text field',
+      text: 'One of the fields was empty. Please try again.',
+      imageUrl: 'http://www.quickmeme.com/img/b1/b1489d5e901176ca95c905cb1aea7251250e6122bd95618048bd80476128a715.jpg'
+    })
+  }
+
+  // Resets all the input values to empty
+  resetFields() {
+    (<HTMLInputElement> document.getElementById('upperText')).value = '';
+    (<HTMLInputElement> document.getElementById('lowerText')).value = '';
+    (<HTMLInputElement> document.getElementById('author')).value = '';
+  }
 }
