@@ -8,9 +8,9 @@ import { MemeService } from './services/meme.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent  {
   title = 'meme-client';
-  memes: Meme[] = []
+  memes: Meme[] = [];
 
   constructor(private memeService: MemeService, 
               private dataService: DataService) {}
