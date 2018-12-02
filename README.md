@@ -21,16 +21,16 @@ What you need to run meme-client on Windows 10
 - First, navigate to the assets folder in the file directory.
 - Create file called `keys.ts`.
 - Create the following class 
-  - ```
-      export class Keys {
-        templateAlbumHash: string = '';
-        memeAlbumHash: string = '';
-        clientId: string = '';
-        clientSecret: string = '';
-        accessToken: string = '';
-        refreshToken: string = '';
-      }
-    ```
+  ```
+  export class Keys {
+    templateAlbumHash: string = '';
+    memeAlbumHash: string = '';
+    clientId: string = '';
+    clientSecret: string = '';
+    accessToken: string = '';
+    refreshToken: string = '';
+  }
+  ```
 - After logging in to imgur, go to albums and create two new albums
 - 
 
