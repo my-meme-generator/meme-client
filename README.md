@@ -10,9 +10,33 @@ These instructions will you get a copy of the project up and running on your loc
 
 What you need to run meme-client on Windows 10
 
-- Install [Node.js and npm ](https://nodejs.org/en/download/)
+- Install [Node.js and npm ](https://nodejs.org/en/download/).
 - Install the angular cli by running the following command from the terminal: 
-    - `npm install -g @angular/cli`
+  - `npm install -g @angular/cli`
+- Create [imgur](https://imgur.com/) account.
+- Install [Postman](https://www.getpostman.com/apps).
+
+### Create albums in Imgur
+
+- First, navigate to the assets folder in the file directory.
+- Create file called `keys.ts`.
+- Create the following class 
+  - ```export class Keys {
+        templateAlbumHash: string = '';
+        memeAlbumHash: string = '';
+        clientId: string = '';
+        clientSecret: string = '';
+        accessToken: string = '';
+        refreshToken: string = '';
+      }```
+- After logging in to imgur, go to albums and create two new albums
+- 
+
+### Register Application With Imgur
+
+- Open Postman
+- In a new request, click on Authorization
+- Click on "Get New Access Token"
 
 ### Running Application
 
