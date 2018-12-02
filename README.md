@@ -1,27 +1,34 @@
-# MemeClient
+# Memerables Client
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.3.
+Memerables is a meme generator application developed for a Web Development class at [Portland State University](https://www.pdx.edu/).
 
-## Development server
+## Getting Started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+These instructions will you get a copy of the project up and running on your local machine for development purposes.
 
-## Code scaffolding
+### Prerequisites Windows
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+What you need to run meme-client on Windows 10
 
-## Build
+- Install [Node.js and npm ](https://nodejs.org/en/download/)
+- Install the angular cli by running the following command from the terminal: 
+    - `npm install -g @angular/cli`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### Running Application
 
-## Running unit tests
+- Download the repository
+- In Visual Studio Code, run the command `npm i` to install node_modules.
+- In Visual Studio Code, run the command `ng serve --open`. This will open a web browser.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Built With
 
-## Running end-to-end tests
+- [Visual Studio Code](https://code.visualstudio.com) - Code editor
+- [Angular](https://angular.io) - Web framework
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## License
 
-## Further help
+This program is licensed under the "MIT License". Please see the file LICENSE in the source distribution of this software for license terms.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Author
+
+- Cole Phares - [zedzorander](https://github.com/zedzorander)
