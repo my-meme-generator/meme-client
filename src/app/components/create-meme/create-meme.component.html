@@ -1,3 +1,39 @@
-<p>
-  create-meme works!
-</p>
+<div id="outerContainer">
+  <div class="container" id="innerContainer">
+    <div id="headerRow">
+      CREATE FUNNY MEME OR GET OUT!!
+    </div>
+    <div class="row" id="memeRow">
+      <div class="col-lg-8">
+        <canvas id="memeCanvas">
+          <img style="display: none" src="{{mainImage}}" id="start-image" crossorigin="anonymous">
+        </canvas>
+      </div>
+      <div class="col-lg-4">
+        <p>Select An Image:</p>
+        <div class="container">
+          <div *ngIf="images">
+            <div class="row">
+              <div *ngFor="let image of images">
+                <div class="col-md-3">
+                  <img src="{{image}}" alt="" (click)="selectImage(image)">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div id="input">
+          <p>Upper text:</p>
+          <input id="upperText" type="text" placeholder="enter text">
+          <p>Lower text:</p>
+          <input id="lowerText" type="text" placeholder="enter text">
+          <p>Created by:</p>
+          <input id="author" type="text" placeholder="enter name">
+          <button type="button" class="btn btn-dark" (click)="createMeme()">Create Meme</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

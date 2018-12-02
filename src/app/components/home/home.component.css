@@ -1,0 +1,85 @@
+.container {
+  padding: 10px;
+  background-color: rgba(58, 58, 61, 0.829);
+  border: 2px solid rgb(10, 94, 219);
+  text-align: center;
+  width: 100%;
+}
+
+.row {
+  display: inline;
+}
+
+button {
+  border-radius: 4px;
+  margin: 5px;
+}
+
+.card {
+  margin: 50px auto;
+  float: none;
+  margin-bottom: 10px;
+  max-width: 30rem;
+  background-color: rgb(115, 183, 228);
+  border: 1px solid black;
+}
+
+.card-top {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.above-text {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translate(-50%);
+  text-transform: uppercase;
+  font: 40px "Impact";
+  text-shadow:  #000 0px 0px 2px,   #000 0px 0px 2px,   #000 0px 0px 2px,
+                #000 0px 0px 2px,   #000 0px 0px 2px,   #000 0px 0px 2px;
+}
+
+.below-text {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translate(-50%);
+  text-transform: uppercase;
+  font: 40px "Impact";
+  text-shadow:  #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px,
+                #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px;
+}
+
+.card-body {
+  margin: 10px;
+  text-align: left;
+}
+
+.card-title {
+  font-size: 18px;
+}
+
+canvas {
+  width: 100%;
+}
+
+img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+span p {
+  display: inline-block; /* the default for span */
+  padding: 10px;
+}
+
+span p i {
+  cursor: pointer;
+}
+
+#social i {
+  margin-right: 20px;
+  cursor: pointer;
+}
